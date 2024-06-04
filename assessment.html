@@ -1,0 +1,69 @@
+<p>
+  <strong>Objective:</strong>&nbsp;Create a simple script to scrape Amazon
+  product listings from the first page of search results for a given keyword.
+</p>
+<p><strong>Task Requirements:</strong></p>
+<ol>
+  <li>
+    <strong>Backend/API (Node.js):</strong>
+    <ul>
+      <li>
+        Set up a Node.js project with the necessary dependencies (express, axios
+        and JSDOM).
+      </li>
+      <li>
+        Write a script using&nbsp;axios&nbsp;to fetch the contents of the Amazon
+        search results page for a given keyword.
+      </li>
+      <li>
+        Use&nbsp;JSDOM to parse the HTML content and extract the following
+        details for each product listing on the first page:
+        <ul>
+          <li>Product Title</li>
+          <li>Rating (stars out of five)</li>
+          <li>Number of reviews</li>
+          <li>Product image URL</li>
+        </ul>
+      </li>
+      <li>
+        Create an endpoint&nbsp;/api/scrape&nbsp;where a GET request with a
+        query parameter&nbsp;?keyword=yourKeyword initiates the scraping process
+        and returns the extracted data in JSON format.
+      </li>
+    </ul>
+  </li>
+  <li>
+    <strong>Frontend (HTML, CSS, Vanilla JavaScript):</strong>
+    <ul>
+      <li>
+        Develop a simple webpage with:
+        <ul>
+          <li>An input field to enter the search keyword.</li>
+          <li>A button to initiate the scraping process.</li>
+        </ul>
+      </li>
+      <li>Style the webpage to be user-friendly and presentable.</li>
+      <li>
+        Implement JavaScript to make an AJAX call to the backend endpoint when
+        the button is clicked, and display the results formatted cleanly on the
+        page.
+      </li>
+    </ul>
+  </li>
+</ol>
+<p><strong>Documentation:</strong></p>
+<ul>
+  <li>
+    Provide comments within your code to offer clarity on your logic and
+    process.
+  </li>
+  <li>Include a README.md&nbsp;file with the setup and running instructions</li>
+</ul>
+<p><strong>Considerations:</strong></p>
+<ul>
+  <li>Ensure you handle errors gracefully both on the backend and frontend.</li>
+  <li>
+    <span>Provide clear instructions on how to run the application.</span>
+  </li>
+  <li>The cleaner and more functional the code is, the better.<br /></li>
+</ul>
