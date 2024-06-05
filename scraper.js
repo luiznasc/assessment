@@ -2,7 +2,7 @@ const axios = require('axios');
 const jsdom = require('jsdom');
 const { JSDOM } = jsdom;
 
-const search = 'tupperware'
+const search = 'dish washer'
 let products;
 let ratings;
 let items;
@@ -24,6 +24,11 @@ axios({
             break;
         }
         console.log('\n');
+        console.log(`${i} i`);
+
+        let image = items[i].getElementsByClassName('s-image-optimized-rendering')[0].src;
+        console.log(image);
+
         let titleContent = items[i].getElementsByClassName("s-underline-text")[0].getElementsByTagName('span')
         // This flow control is to merge the spans, since sometimes the text content is divided in two.
         let details;
@@ -35,7 +40,9 @@ axios({
         titleContent = titleContent[0].textContent + details;
         console.log('TITLE: '+ titleContent);
 
+        // Ratings(stars out of 5)
         let rating = items[i].getElementsByClassName("a-icon-star-small")[0].textContent;
+        // Review count
         let numberOfReviews = items[i].querySelectorAll("[data-csa-c-content-id='alf-customer-ratings-count-component']")[0].textContent;
         
         console.log('Rating: ' + rating);
