@@ -22,10 +22,6 @@ async function Search(keyword) {
     // Scraping and building the final result
     let results = {};
     for (var i = 0; i < items.length; i++) {
-      // This is to prevent the loop from spilling off of the json results
-      if (i === "item") {
-        break;
-      }
       // Title scraping
       let titleContent = items[i]
         .getElementsByClassName("s-underline-text")[0]
@@ -62,9 +58,9 @@ async function Search(keyword) {
 
       // Basic json object building
       results[i] = {
-        "product title": titleContent,
+        title: titleContent,
         rating: rating,
-        "number of reviews": numberOfReviews,
+        reviews: numberOfReviews,
         image: image,
       };
     }

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simple Web Scraper</title>
+    <style>
+      body {
+        font-family: sans-serif;
+        margin: 0;
+        padding: 20px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        background-color: #f5f5f5;
+      }
+
+      .search-container {
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        border-radius: 5px;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      .search-input {
+        border: none;
+        padding: 5px;
+        font-size: 16px;
+        flex: 1;
+        border-radius: 5px 0 0 5px;
+      }
+
+      .search-button {
+        padding: 10px 20px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 0 5px 5px 0;
+        cursor: pointer;
+      }
+      body {
+        flex: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="search-container">
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Enter your search keyword"
+      />
+      <button class="search-button" onclick="main()">search</button>
+    </div>
+    <div id="product-list"></div>
+    <script>
+      async function search(url) {
+        const data = await fetch(url).then((response) => response.json());
+        return data;
+      }
+
+      async function main() {
+        const button = document.querySelector(".search-button");
+        const keyword = document.querySelector(".search-input").value;
+        const result = await search(
+          `http://localhost:3000/api/scrape?keyword=${keyword}`
+        );
+
+        var products = document.getElementById("product-list");
+        document.body.appendChild(products);
+        
+        for (var i=0; i < Object.keys(result).length; i++) {
+            var item = document.createElement("div");
+            item.className = `search-result-${i}`;
+
+            var image = document.createElement("img");
+            image.src = result[i].image
+
+            var title = document.createElement("div");
+            title.className = `search-title-${i}`;
+            title.textContent = "Product title: " + result[i].title
+
+            var rating = document.createElement("div");
+            rating.innerHTML = `<span class='rating-${i}'>rating: ${result[i].rating}</span>`
+
+            var numberOfRatings = document.createElement("div");
+            numberOfRatings.innerHTML = `<span class='number-of-ratings-${i}'>${result[i].reviews} reviews</span>`
+
+            item.appendChild(image);
+            item.appendChild(title);
+            item.appendChild(rating);
+            item.appendChild(numberOfRatings);
+            console.log(products);
+            products.appendChild(item);
+        }
+      }
+    </script>
+  </body>
+</html>
