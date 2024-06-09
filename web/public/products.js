@@ -14,7 +14,7 @@ async function searchProducts() {
 
   // Building the new products div
   const newProducts = document.createElement("div");
-  newProducts.id = "product-list";
+  newProducts.className = "product-list";
 
   // Iterating through the results to populate the div
   for (var i = 0; i < Object.keys(result).length; i++) {
@@ -23,14 +23,15 @@ async function searchProducts() {
 
     var image = document.createElement("img");
     image.src = result[i].image;
+    image.className = 'product-image';
 
     var title = document.createElement("div");
     title.className = `detailed-info search-title search-title-${i}`;
-    title.textContent = "Product title: " + result[i].title;
+    title.textContent = result[i].title;
 
     var rating = document.createElement("div");
     rating.className = `detailed-info`
-    rating.innerHTML = `<span class='rating rating-${i}'>rating: ${result[i].rating}</span>`;
+    rating.innerHTML = `<span class='rating rating-${i}'>${result[i].rating}</span>`;
 
     var numberOfRatings = document.createElement("div");
     numberOfRatings.className = `detailed-info`
@@ -40,12 +41,13 @@ async function searchProducts() {
     itemDescription.appendChild(title);
     itemDescription.appendChild(rating);
     itemDescription.appendChild(numberOfRatings);
-    itemDescription.className = `description description-${i}`;
+    itemDescription.className = `container description description-${i}`;
     item.appendChild(image);
     item.appendChild(itemDescription);
     newProducts.appendChild(item);
   }
 
-  const products = document.getElementById("product-list");
-  products.replaceWith(newProducts)
+  const products = document.getElementsByClassName("product-list");
+  console.log(products);
+  products[0].replaceWith(newProducts)
 }
