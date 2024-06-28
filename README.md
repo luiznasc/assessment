@@ -25,4 +25,4 @@ $ node ./web/web.js
 ```
 
 Go into your local host, port 8000 and the search will be available. Type in the search box and click the "search" button. Your results will show below the search box.
-Alternatively, you could just open <directory>/product-scraper/web/webpage.html on your browser.
+Alternatively, you could just open project-directory/product-scraper/web/webpage.html on your browser.
